@@ -2,7 +2,8 @@ import os
 import django
 import sys
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'tasks.settings')
+# Set correct Django settings module (replace 'taskmanager' with your actual project name)
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'taskmanager.settings')
 django.setup()
 
 from django.contrib.auth import get_user_model
