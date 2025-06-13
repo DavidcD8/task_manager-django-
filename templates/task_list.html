@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block title %}Task List{% endblock %}
+
+{% block content %}
+<div class="container">
+    <p>Welcome, <strong>{{ user.username }}!</strong></p>
+    <form method="get" class="search-form">
+        <div class="form-item">
+            {{ form.q.label_tag }}<br>
+            {{ form.q }}
+        </div>
+        <div class="form-item">
+            {{ form.completed.label_tag }}<br>
+            {{ form.completed }}
+        </div>
+        <div class="form-item">
+            <label>&nbsp;</label><br> <!-- empty label for spacing -->
+            <button type="submit" class="search-btn">🔍 Search</button>
+        </div>
+    </form>
+    <h1>📋 All Tasks</h1>
+    <a id="add_btn" href="{% url 'add_task' %}">➕ Add New Task</a>
+    <ul>
+        {% for task in page_obj %}
+        <li>
+            <h2><strong>{{ task.name }}</strong></h2>
+            <p>{{ task.description }}</p>
+            <p>Due on: {{ task.date }}</p>
+            {% if task.completed %}
+                ✅ Completed
+            {% else %}
+                ❌ Not completed
+                <a href="{% url 'complete_task' task.id %}"> - Mark as completed</a>
+            {% endif %}
+
+            <!-- Edit/Delete Links -->
+            <div class="task-actions">
+                <a href="{% url 'edit_task' task.id %}">✏️ Edit</a> |
+                <a href="{% url 'delete_task' task.id %}">🗑 Delete</a>
+            </div>
+        </li>
+        {% empty %}
+        <p>No tasks available.</p>
+        {% endfor %}
+    </ul>
+
+    <!-- 📄 Pagination Controls -->
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">⏮ First</a>
+            <a href="?page={{ page_obj.previous_page_number }}">◀ Prev</a>
+        {% endif %}
+
+        <span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Next ▶</a>
+            <a href="?page={{ page_obj.paginator.num_pages }}">Last ⏭</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Task{% endblock %}
+
+{% block content %}
+<div class="task-form-container">
+    <h1>✏️ Edit Task</h1>
+
+    <form method="post" class="task-form">
+        {% csrf_token %}
+
+        <div>
+            <label for="name">Name:</label>
+            <input type="text" name="name" id="name" value="{{ task.name }}" required>
+        </div>
+
+        <div>
+            <label for="description">Description:</label>
+            <textarea name="description" id="description" rows="4" required>{{ task.description }}</textarea>
+        </div>
+
+        <button type="submit">✅ Update Task</button>
+    </form>
+
+    <a href="{% url 'task_list' %}">⬅ Back to Task List</a>
+</div>
+{% endblock %}
