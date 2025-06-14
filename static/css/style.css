@@ -93,7 +93,7 @@ html {
     list-style: none;
     box-shadow: 0 2px 4px rgba(141, 140, 140, 0.1);
     margin-bottom: 10px;
-    max-width: 800px;
+    max-width: 600px;
     position: relative;
     min-height: 120px;
 }
@@ -147,18 +147,6 @@ html {
 
 }
 
-
-
-
-@media (max-width: 768px) {
-    .container {
-        padding: 20px;
-    }
-
-    .container li {
-        padding: 15px;
-    }
-}
 
 
 .pagination {
@@ -248,7 +236,8 @@ html {
 /* Shared styling for both Add and Edit Task pages */
 .task-form-container {
     max-width: 600px;
-    padding: 60PX 40PX;
+    padding: 60px 40px;
+    margin: 0 auto; /* Center the container */
 }
 
 .task-form-container h1 {
@@ -277,12 +266,14 @@ html {
     border: 1px solid #ccc;
     border-radius: 6px;
     transition: border-color 0.3s ease;
+    width: 560px;
 }
 
 .task-form input[type="text"]:focus,
 .task-form textarea:focus {
     border-color: #007bff;
     outline: none;
+
 }
 
 .task-form button {
@@ -311,4 +302,24 @@ html {
 
 .task-form a:hover {
     text-decoration: underline;
+}
+
+
+
+
+
+
+/* media query for smaller screen */
+@media (max-width: 768px) {
+    .container {
+        padding: 20px;
+    }
+
+    .container li {
+        padding: 40px 30px;
+    }
+
+    .task-form input[type="text"], .task-form textarea {
+        width: 100%;
+    }
 }
