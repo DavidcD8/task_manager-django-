@@ -96,6 +96,7 @@ html {
     max-width: 600px;
     position: relative;
     min-height: 120px;
+    font-size: 13px;
 }
 
 .container a {
@@ -104,11 +105,18 @@ html {
 }
 
 .container p {
-    margin-bottom: 40px;
+    padding: 24px 0px 5px 0;
+
+}
+ #completed {
+    padding: 0 0 0 22px;
 
 }
 
+#completed:hover {
+   color: rgb(125, 200, 150);
 
+}
 .task-actions {
     position: absolute;
     bottom: 10px;
@@ -237,7 +245,8 @@ html {
 .task-form-container {
     max-width: 600px;
     padding: 60px 40px;
-    margin: 0 auto; /* Center the container */
+    margin: 0 auto;
+    /* Center the container */
 }
 
 .task-form-container h1 {
@@ -306,20 +315,31 @@ html {
 
 
 
-
-
-
 /* media query for smaller screen */
 @media (max-width: 768px) {
     .container {
-        padding: 20px;
+        padding: 60px 40px;
     }
 
     .container li {
         padding: 40px 30px;
     }
 
-    .task-form input[type="text"], .task-form textarea {
+    #completed {
+        padding-left: 11px;
+        font-size: 15px;
+        position: absolute;
+        bottom: 40px;
+        right: 20px;
+        font-size: 14px;
+    }
+    .custom-navbar .nav-links li a {
+
+        padding: 0;
+    }
+
+    .task-form input[type="text"],
+    .task-form textarea {
         width: 100%;
     }
 }
